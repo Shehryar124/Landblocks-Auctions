@@ -1,3 +1,4 @@
+import { Timestamp } from 'mongodb';
 import mongoose from 'mongoose';
 
 const itemSchema = new mongoose.Schema({
@@ -25,6 +26,17 @@ const itemSchema = new mongoose.Schema({
         type: String,
         default: ""
     },
+
+    seller: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true,
+    },
+
+    endTime: {
+        type: Date,
+        required: true
+    }
 },
     {timestamps: true},
 )
