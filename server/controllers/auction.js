@@ -27,7 +27,6 @@ export const createAuction = async (req,res) => {
 export const fetchAuction = async (req,res) => {
     try {
         const foundAuctions = await Item.find({}).populate('seller');
-        console.log(foundAuctions);
         if (foundAuctions) {
             res.status(200).json(foundAuctions);
         } else {
@@ -47,6 +46,7 @@ export const updateAuction = async (req, res) => {
             highestBidder: winningBidder, 
             highestBidValue: highestBid,
         }, {new: true});
+        console.log("the updated auction is: ", updatedAuction);
         
         if (updatedAuction) {
             res.status(200).json({message: "Auction updated successfully"});
